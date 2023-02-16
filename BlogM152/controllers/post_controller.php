@@ -24,7 +24,7 @@ switch ($action) {
             for ($i = 0; $i < count($fichiersArray['name']); $i++) {
 
                 // vérifier si le fichier est une image
-                if (explode("/", $fichiersArray['type'][$i])[0] != "image") {
+                if (explode("/", $fichiersArray['type'][$i])[0] != "image" && explode("/", $fichiersArray['type'][$i])[0] != "video") {
                     $_SESSION['message'] = [
                         'type' => "danger",
                         'content' => "Les fichiers ne peuvent être que des images"
