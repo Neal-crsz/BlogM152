@@ -42,7 +42,14 @@
                             </video>
                         </div>
                         <?php
-                            break;
+                        break;
+                    case 'audio':
+                        ?>
+                            <div style="border: 1px solid black; width: 33.3%">
+                                <audio controls src="./assets/medias/<?= $media->getNomFichierMedia() ?>" style="width: 50%; margin-left: 20%"></audio>
+                            </div>
+                        <?php
+                        break;
 
                 }
                 echo '<br>';
@@ -52,7 +59,7 @@
         </div>
         <div class="form-group">
             <label for="idFile">Fichiers</label>
-            <input type="file" class="form-control-file" id="idFile" accept="image/*, video/*" multiple name="filesPost[]">
+            <input type="file" class="form-control-file" id="idFile" accept="image/*, video/*, audio/*" multiple name="filesPost[]">
         </div>
 
         <input class="btn btn-success" type="submit" value="Valider">

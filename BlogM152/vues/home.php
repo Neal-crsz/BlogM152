@@ -52,9 +52,10 @@
 					<div class="panel panel-default animate__animated animate__zoomIn">
 						<div class="panel-heading">
 							<div class="row">
-								<div>
-									<button class="btn btn-primary">Modifier</button>
-									<button class="btn btn-dangert">Supprimer</button>
+								<!-- main col left -->
+								<div class="col-sm-6" style="text-align: right;">
+									<a class="btn btn-primary" href="index.php?uc=post&action=edit&idPost=<?= $post->getIdPost() ?>">Modifier</a>
+									<a class="btn btn-danger" href="index.php?uc=post&action=delete&idPost=<?= $post->getIdPost() ?>">X</a>
 								</div>
 							</div>
 						</div>
@@ -91,6 +92,14 @@
 											<?php
 												break;
 											case 'audio':
+											?>
+												<div class="item <?= $count == 0 ? "active" : "" ?>">
+														<audio controls src="./assets/medias/<?= $media->getNomFichierMedia() ?>" style="width: 50%; margin-left: 20%"></audio>
+												</div>
+									<?php
+
+												break;
+												case 'audio':
 											?>
 												<div class="item <?= $count == 0 ? "active" : "" ?>">
 														<audio controls src="./assets/medias/<?= $media->getNomFichierMedia() ?>" style="width: 50%; margin-left: 20%"></audio>

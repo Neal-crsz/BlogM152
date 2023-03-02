@@ -216,5 +216,21 @@ class Media
         return $result->getCompteurMedia();
     }
 
+    // récupère le nom du fichier en fonction de son id
+    public static function GetMediaNameById($idMedia){
+        $req = MonPdo::getInstance()->prepare("SELECT nomFichierMedia FROM media WHERE idMedia = :idMedia");
+        $req->bindParam(":idMedia", $idMedia);
+        $req->execute();    
+        $result = $req->fetch();
+        return $result['nomFichierMedia'];
+       }
+
+    // supprime un media de la base de données en fonction de son id
+    public static function DeleteMedia($idMedia){
+        $req = MonPdo::getInstance()->prepare("DELETE FROM media WHERE idMedia = :idMedia");
+        $req->bindParam(":idMedia", $idMedia);
+        $req->execute();    
+       }
+
 }
 ?>

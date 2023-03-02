@@ -141,6 +141,34 @@ class Post
         return MonPdo::getInstance()->lastInsertId();
     }
 
+    // Modifier le post dans la base de donnée
+    public static function UpdatePost(Post $post){
+        $commentaire = $post->getCommentairePost();
+        $date = $post->getModificationDatePost();
+     $req = MonPdo::getInstance()->prepare("UPDATE post SET commentairePost = :commentaire, modificationDatePost = :modificationDatePost");
+     $req->bindParam(":commentaire", $commentaire);
+     $req->bindParam(":modificationDatePost", $date);
+     $req->execute(); // executer la requette
+ 
+    }
+
+    // Supprime un post en fonction de l'id du post
+   public static function DeletePost($idPost){
+    $req = MonPdo::getInstance()->prepare("DELETE FROM post WHERE idPost = :idPost");
+    $req->bindParam(":idPost", $idPost);
+    $req->execute();  
+   }
+   
+   public static function GetPostById($idPost){
+    $req = MonPdo::getInstance()->prepare("SELECT * FROM post WHERE idPost = :idPost;");
+    $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Post'); // methode de fetch
+    $req->bindParam(":idPost", $idPost);
+    $req->execute(); // executer la requette
+
+    $result = $req->fetch();
+    return $result;
+   }
+
 }
 
 ?>
